@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Conversordemoeda
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Qual é a colação do dólar? ");
+            double cotacao = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            Console.WriteLine("Quantos dólares você vai comprar? ");
+            double quantia = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            double result = conversao.DolarParaReal(quantia, cotacao);
+
+            Console.WriteLine("Valor a ser pago em reais = "+result.ToString("F2",CultureInfo.InvariantCulture));
+        }
+    }
+}
+
+
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Conversordemoeda
+{
+    internal class conversao
+    {
+        public static double Iof = 0.06;
+
+        public static double DolarParaReal(double quantia, double cotacao)
+        {
+            double total = quantia * cotacao;
+
+            return total + total * Iof;
+        }
+
+    }
+}
